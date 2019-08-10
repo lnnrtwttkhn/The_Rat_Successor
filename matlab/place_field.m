@@ -2,7 +2,7 @@ function place_field
 
 dataDir = uigetdir();
 
-load(fullfile(dataDir,DataFiles,AJF016,CD3,AJF016CD3SpksEvs.mat))
+load(fullfile(dataDir,'DataFiles','AJF016','CD3','AJF016CD3SpksEvs.mat'))
 
 x1 = unitdata.rawLEDs(:,2);
 y1 = unitdata.rawLEDs(:,3);
