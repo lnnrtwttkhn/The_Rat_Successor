@@ -1,5 +1,5 @@
 
-function load_ephys 
+function eventsTimestamps=load_ephys 
 % load and order data in timestamps.
 % MIND summer school 2019.
 
@@ -28,14 +28,12 @@ all_events = [all_events,multiEvent];
 end 
 
 
-
 eventsTimestamps = table(all_events',all_ts);
 
-[a,b]=sort(all_ts);
 
-all_events= all_events(b)'; 
 
-eventsTimestamps = table(all_events',all_ts);
+
+
 
 
 
