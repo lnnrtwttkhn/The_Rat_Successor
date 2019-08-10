@@ -11,12 +11,16 @@ def get_mat_file(animal="AJF016", trial="CD3", basefolder="The_Rat_Successor"):
     data_path /= (animal+trial+"SpksEvs.mat")
     return scipy.io.loadmat(data_path)
 
-def load_events(matfile=get_mat_file()):
+def load_events(matfile):
     '''
     Function for loading the events into a pandas DataFrame.
     
+    Arguments:
+    matfile -- The scipy io object representing a .mat file with the data.
+    
     Example usage (filter out the frame marker events):
-    >>> events = load_events()
+    >>> matfile = scipy.io.loadmat("some_data_file.mat")
+    >>> events = load_events(matfile)
     >>> events.query("event_type != 'Frame Marker'")
     '''
     all_dfs = []
@@ -29,7 +33,11 @@ def load_events(matfile=get_mat_file()):
         all_dfs.append(df)
     return pd.concat(all_dfs).sort_values("timestamp") 
 
-def load_spike_data(matfile=get_mat_file()):
+def load_spike_data(matfile):
+    '''
+    Arguments:
+    matfile -- The scipy io object representing a .mat file with the data.
+    '''
     unit_ts=matfile["unitdata"][0]["units"][0]["ts"]
     num_neurons = unit_ts.shape[1]
     all_dfs = []
@@ -40,7 +48,11 @@ def load_spike_data(matfile=get_mat_file()):
         all_dfs.append(df)
     return pd.concat(all_dfs)
 
-def load_position(matfile=get_mat_file()):
+def load_position(matfile):
+    '''
+    Arguments:
+    matfile -- The scipy io object representing a .mat file with the data.
+    '''
     position=matfile["unitdata"]["rawLEDs"][0,0]
     cols = ["timestamp", "x1", "y1", "x2", "y2"]
     return pd.DataFrame(position, columns=cols).set_index("timestamp")
