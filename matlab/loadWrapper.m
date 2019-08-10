@@ -4,7 +4,7 @@ p = inputParser;
 p.addParameter('dataType', 'behavior');
 p.addParameter('animal', 'AJF016');
 p.addParameter('session', 'CD1');
-p.addParameter('root', nan);
+p.addParameter('root', '');
 p.parse(varargin{:});
 
 
@@ -30,6 +30,8 @@ switch p.Results.dataType
             multiEvent = repmat({cinedata(1).events{ievent}.name},[1 length(timestamps{ievent})]);
             all_events = [all_events,multiEvent];
         end 
+        [~,indx]=sort(all_ts);
+        all_events= all_events(indx);
         eventsTimestamps = table(all_events',all_ts);
         varargout{1} = eventsTimestamps;
         
