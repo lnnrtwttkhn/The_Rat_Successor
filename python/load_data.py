@@ -39,3 +39,8 @@ def load_spike_data(matfile=get_mat_file()):
         df["neuron"] = i
         all_dfs.append(df)
     return pd.concat(all_dfs)
+
+def load_position(matfile=get_mat_file()):
+    position=matfile["unitdata"]["rawLEDs"][0,0]
+    cols = ["timestamp", "x1", "y1", "x2", "y2"]
+    return pd.DataFrame(position, columns=cols).set_index("timestamp")
