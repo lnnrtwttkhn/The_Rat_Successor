@@ -1,9 +1,9 @@
 
-function eventsTimestamps=load_ephys 
+function eventsTimestamps=load_ephys(~) 
 % load and order data in timestamps.
 % MIND summer school 2019.
 
-load('/Users/Christoffer/Dropbox/PhD/Projects/the_rat_successor/The_Rat_Successor/DataFiles/AJF016/CD1/AJF016CD1SpksEvs.mat')
+load('/Users/Christoffer/Dropbox/PhD/Projects/the_rat_successor/The_Rat_Successor/DataFiles/AJF016/CD3/AJF016CD3SpksEvs.mat')
 
 
 % cell array for events and timestamps.
@@ -11,7 +11,6 @@ load('/Users/Christoffer/Dropbox/PhD/Projects/the_rat_successor/The_Rat_Successo
 events=cell(1,length(cinedata(1).events));
 timestamps=cell(1,length(cinedata(1).events));
 
-eventsTimestamps = table()
 all_ts=[];
 all_events = {};
 
@@ -27,8 +26,15 @@ all_events = [all_events,multiEvent];
 
 end 
 
+[~,indx]=sort(all_ts);
+all_events= all_events(indx);
+
 
 eventsTimestamps = table(all_events',all_ts);
+
+
+
+
 
 
 
