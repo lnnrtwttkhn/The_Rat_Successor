@@ -26,8 +26,15 @@ all_events = [all_events,multiEvent];
 
 end 
 
+[~,indx]=sort(all_ts);
+all_events= all_events(indx);
+
 
 eventsTimestamps = table(all_events',all_ts);
+
+
+
+
 
 
 
