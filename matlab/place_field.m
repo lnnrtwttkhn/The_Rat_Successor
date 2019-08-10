@@ -1,9 +1,8 @@
 function place_field 
 
-addpath(genpath('/Users/Christoffer/Dropbox/PhD/Projects/the_rat_successor/code'))
-load('/Users/Christoffer/Dropbox/PhD/Projects/the_rat_successor/The_Rat_Successor/DataFiles/AJF016/CD3/AJF016CD3SpksEvs.mat')
+dataDir = uigetdir();
 
-spkmat
+load(fullfile(dataDir,DataFiles,AJF016,CD3,AJF016CD3SpksEvs.mat))
 
 x1 = unitdata.rawLEDs(:,2);
 y1 = unitdata.rawLEDs(:,3);
