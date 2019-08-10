@@ -3,7 +3,7 @@ function eventsTimestamps=load_ephys(~)
 % load and order data in timestamps.
 % MIND summer school 2019.
 
-load('/Users/Christoffer/Dropbox/PhD/Projects/the_rat_successor/The_Rat_Successor/DataFiles/AJF016/CD3/AJF016CD3SpksEvs.mat')
+load('AJF016/CD3/AJF016CD3SpksEvs.mat')
 
 
 % cell array for events and timestamps.
@@ -26,7 +26,7 @@ all_events = [all_events,multiEvent];
 
 end 
 
-[~,indx]=sort(all_ts);
+[all_ts,indx]=sort(all_ts);
 all_events= all_events(indx);
 
 
